@@ -1,0 +1,30 @@
+.TestForm {
+    background-color: #FFFFFF;
+    width: 600px;
+    height: 600px;
+    overflow: auto;
+    padding: 20px;
+    border-radius: 25px;
+}
+
+.TestLabel {
+    color: #282c34;
+    font-size: 20px;
+    font-family: "Times New Roman", serif;
+    font-weight: bold;
+}
+
+
+.TestCenter {
+    text-align: center;
+}
+
+.TestText {
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.Summary-list {
+    margin-bottom: 10px;
+}

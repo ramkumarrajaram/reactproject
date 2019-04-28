@@ -1,0 +1,11 @@
+.Test-brand-title {
+    width: 100%
+}
+
+.TestBrand {
+    position: relative;
+    z-index: 500;
+    display: flex;
+    align-items: center!important;
+    width: 50%;
+}
