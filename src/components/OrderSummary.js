@@ -3,9 +3,6 @@ import TestItOrderForm from "./TestItOrderForm";
 import '../styles/TestOrder.css'
 
 export default class OrderSummary extends React.Component{
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         return <div className="TestForm">
