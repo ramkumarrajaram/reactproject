@@ -12,14 +12,17 @@ export default class GoogleWeather extends Component {
         };
     }
 
-    componentWillMount() {
-        fetch('http://samples.openweathermap.org/data/2.5/weather?q=London,uk&appid=b6907d289e10d714a6e88b30761fae22')
+    componentDidMount() {
+        const proxyUrl = 'https://cors-anywhere.herokuapp.com/',
+            targetUrl = 'http://samples.openweathermap.org/data/2.5/weather?q=London,uk&appid=b6907d289e10d714a6e88b30761fae22'
+        fetch(proxyUrl + targetUrl)
             .then(result => {
                 return result.json();
             }).then(data => {
-            this.setState({cityName: data});
-            this.setState({temperature: data.name});
-            this.setState({weatherData: data.name});
+            this.setState({isLoading: true});
+            this.setState({cityName: data.name});
+            this.setState({temperature: data.main.temp});
+            this.setState({weatherData: (data.weather[0].description).toUpperCase()});
         })
     }
 
