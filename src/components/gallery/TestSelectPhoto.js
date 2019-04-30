@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {Link} from "react-router-dom";
-import '../styles/TestGallery.css';
+import '../../styles/TestGallery.css';
 
 class TestSelectPhoto extends Component {
     constructor(props) {
@@ -63,7 +63,7 @@ class TestSelectPhoto extends Component {
                     </td>
                     <td>
                         <img alt="Phuket snap"
-                             src={require('../assets/images/gallery/' + this.state.currentSlide + '.jpg')}/>
+                             src={require('../../assets/images/gallery/' + this.state.currentSlide + '.jpg')}/>
 
                         <div className="TestText">
                             <input className="TestText" type="number" name="numberOfCopies"

@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
-import '../styles/TestOrder.css'
-import '../styles/Common.css'
-import LoadingSpinner from './LoadingSpinner'
+import '../../styles/TestOrder.css'
+import '../../styles/Common.css'
+import LoadingSpinner from "../common/LoadingSpinner"
 
 export default class GoogleWeather extends Component {
     constructor(props) {

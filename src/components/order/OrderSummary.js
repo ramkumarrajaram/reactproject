@@ -1,6 +1,6 @@
 import React from 'react'
 import TestItOrderForm from "./TestItOrderForm";
-import '../styles/TestOrder.css'
+import '../../styles/TestOrder.css'
 
 export default class OrderSummary extends React.Component{
 

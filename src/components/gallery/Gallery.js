@@ -1,14 +1,14 @@
 import React, {Component} from 'react'
-import TestItHeader from "./TestItHeader";
-import GoogleWeather from "./GoogleWeather";
+import TestItHeader from "../common/TestItHeader";
+import TestSelectPhoto from "./TestSelectPhoto";
 
-export default class Weather extends Component {
+export default class Gallery extends Component {
     render() {
         return (
             <div>
                 <TestItHeader/>
                 <div className="App-image">
-                    <GoogleWeather/>
+                    <TestSelectPhoto/>
                 </div>
             </div>
         )
