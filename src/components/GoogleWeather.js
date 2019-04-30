@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import '../styles/TestOrder.css'
 import '../styles/Common.css'
+import LoadingSpinner from './LoadingSpinner'
 
 export default class GoogleWeather extends Component {
     constructor(props) {
@@ -28,23 +29,10 @@ export default class GoogleWeather extends Component {
     }
 
     render() {
-
         const isLoaded = this.state.isLoading;
 
         if (!isLoaded) {
-            return (
-                <div className="TestForm">
-                    <p>
-                        <strong>Please wait!!! Loading data!!</strong>
-                    </p>
-                    <div className="lds-ring">
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                    </div>
-                </div>
-            )
+            return <LoadingSpinner/>;
         } else {
 
             return (
@@ -66,5 +54,4 @@ export default class GoogleWeather extends Component {
             )
         }
     }
-
 }
