@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import '../styles/TestOrder.css'
+import '../styles/Common.css'
 
 export default class GoogleWeather extends Component {
     constructor(props) {
@@ -28,23 +29,42 @@ export default class GoogleWeather extends Component {
 
     render() {
 
-        return (
-            <div className="TestForm">
-                <h2 className="TestCenter">Summary of your order</h2>
-                <div className="Summary-list">
-                    <label><b>City Name: </b></label><br/>
-                    <label>{this.state.cityName}</label>
+        const isLoaded = this.state.isLoading;
+
+        if (!isLoaded) {
+            return (
+                <div className="TestForm">
+                    <p>
+                        <strong>Please wait!!! Loading data!!</strong>
+                    </p>
+                    <div className="lds-ring">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
                 </div>
-                <div className="Summary-list">
-                    <label><b>Temperature: </b></label><br/>
-                    <label>{this.state.temperature}</label>
+            )
+        } else {
+
+            return (
+                <div className="TestForm">
+                    <h2 className="TestCenter">Weather Information</h2>
+                    <div className="Summary-list">
+                        <label><b>City Name: </b></label><br/>
+                        <label>{this.state.cityName}</label>
+                    </div>
+                    <div className="Summary-list">
+                        <label><b>Temperature: </b></label><br/>
+                        <label>{this.state.temperature}</label>
+                    </div>
+                    <div className="Summary-list">
+                        <label><b>Weather Detail: </b></label><br/>
+                        <label>{this.state.weatherData}</label>
+                    </div>
                 </div>
-                <div className="Summary-list">
-                    <label><b>Weather Detail: </b></label><br/>
-                    <label>{this.state.weatherData}</label>
-                </div>
-            </div>
-        )
+            )
+        }
     }
 
 }
