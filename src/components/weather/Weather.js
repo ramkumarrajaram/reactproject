@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import TestItHeader from "../common/TestItHeader";
-import GoogleWeather from "./GoogleWeather";
+//import GoogleWeather from "./GoogleWeather";
+import WeatherForm from './WeatherForm';
 
 export default class Weather extends Component {
     render() {
@@ -8,7 +9,7 @@ export default class Weather extends Component {
             <div>
                 <TestItHeader/>
                 <div className="App-image">
-                    <GoogleWeather/>
+                    <WeatherForm />
                 </div>
             </div>
         )

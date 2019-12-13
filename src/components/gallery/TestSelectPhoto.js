@@ -47,6 +47,7 @@ class TestSelectPhoto extends Component {
         var numberOfCopies = this.state.numberOfCopies;
         var name = "numberOfCopies" + slide;
         this.setState({[name]: numberOfCopies})
+        alert(this.state.numberOfCopies1);
     }
 
     render() {
@@ -82,12 +83,8 @@ class TestSelectPhoto extends Component {
 
                 <Link to ={{
                     pathname: "/order",
-                    state: {
-                        numberOfCopies1: this.state.numberOfCopies1,
-                        numberOfCopies2: this.state.numberOfCopies2,
-                        numberOfCopies3: this.state.numberOfCopies3,
-                        numberOfCopies4: this.state.numberOfCopies4,
-                        numberOfCopies5: this.state.numberOfCopies5
+                    data: {
+                        numberOfCopies1: this.state.numberOfCopies1
                     }
                 }} className="Button" >Pay Now</Link>
             </div>

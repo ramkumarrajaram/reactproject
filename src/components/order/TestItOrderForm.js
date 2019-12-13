@@ -12,7 +12,7 @@ class TestItOrderForm extends React.Component {
             country: 'SG',
             email: '',
             address: '',
-            numberOfCopiesForFirstItem: 0,
+            numberOfCopiesForFirstItem: this.props.numberOfCopiesForFirstItem,
             numberOfCopiesForSecondItem: 0,
             numberOfCopiesForThirdItem: 0,
             numberOfCopiesForFourthItem: 0,
@@ -45,6 +45,8 @@ class TestItOrderForm extends React.Component {
     }
 
     render() {
+        const {match, location} = this.props;
+
         return <form id="test_form">
             {this.state.isNavigated === false &&
             <div className="TestForm">
