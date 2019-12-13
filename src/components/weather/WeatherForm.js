@@ -45,21 +45,19 @@ export default class WeatherForm extends Component {
         } else {
             return (
                 <div class="TestForm">
-                    <div className="TestForm">
                         <h2 className="TestCenter">
                             Weather in your city
                         </h2>
                         <label>
                             <div className="TestLabel">Enter city name</div>
                             <div className="TestText">
-                                <input className="TestText" type="text" name="cityName"
+                                <input className="TestText" type="text" name="cityName" placeholder="City Name"
                                     onChange={this.handleChange}/>
                             </div>
                         </label>
                         <div className="TestCenter">
                             <input className="Button" type="submit" value="Search" onClick={this.handleSubmit}/>
-                        </div>
-                    </div>
+                        </div>                  
                 </div>
             )
         }

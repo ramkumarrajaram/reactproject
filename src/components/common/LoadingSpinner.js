@@ -4,12 +4,8 @@ import '../../styles/Common.css'
 export default class LoadingSpinner extends Component {
     render() {
         return (
-
             <div className="TestForm">
-                <p>
-                    <strong>Please wait!!! Loading data!!</strong>
-                </p>
-                <div className="lds-ring">
+                <div className="lds-ring centre-content">
                     <div></div>
                     <div></div>
                     <div></div>
