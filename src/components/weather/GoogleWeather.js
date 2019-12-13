@@ -9,7 +9,7 @@ export default class GoogleWeather extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isLoading: false,
+            isLoaded: false,
             cityName: this.props.cityName,
             temperature: '',
             weatherData: '',
@@ -32,20 +32,20 @@ export default class GoogleWeather extends Component {
                 const zeroCelciusToKelvin = 273.15;
                 const temperature = data.main.temp;
                 let temperatureInCelcius = (temperature - zeroCelciusToKelvin).toFixed();
-                this.setState({isLoading: true});
+                this.setState({isLoaded: true});
                 this.setState({cityName: data.name});
                 this.setState({temperature: temperatureInCelcius});
                 this.setState({weatherData: (data.weather[0].description).toUpperCase()});
             })
             .catch(error => {
-                this.setState({isLoading: true});
+                this.setState({isLoaded: true});
                 this.setState({isErrorOccurred: true});
                 this.setState({errorMessage: error.message});
             })
     }
 
     render() {
-        const isLoaded = this.state.isLoading;
+        const isLoaded = this.state.isLoaded;
         const isErrorOccurred = this.state.isErrorOccurred;
 
         if (!isLoaded) {
