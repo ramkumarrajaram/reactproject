@@ -7,6 +7,7 @@ class TestSelectPhoto extends Component {
         super(props)
         this.state = {
             currentSlide: 1,
+            copiesArray: [],
             numberOfCopies: 0,
             numberOfCopies1: 0,
             numberOfCopies2: 0,
@@ -20,7 +21,7 @@ class TestSelectPhoto extends Component {
     }
 
     next = () => {
-        var increased = this.state.currentSlide + 1
+        let increased = this.state.currentSlide + 1
         if (increased > this.state.max) {
             this.setState({currentSlide: 1})
         } else {
@@ -29,7 +30,7 @@ class TestSelectPhoto extends Component {
     }
 
     previous = () => {
-        var decreased = this.state.currentSlide - 1
+        let decreased = this.state.currentSlide - 1
         if (decreased === 0) {
             this.setState({currentSlide: this.state.max})
         } else {
@@ -42,15 +43,24 @@ class TestSelectPhoto extends Component {
         this.setState({[event.target.name]: event.target.value})
     }
 
-    handleSubmit = (event) => {
-        var slide = this.state.currentSlide;
-        var numberOfCopies = this.state.numberOfCopies;
-        var name = "numberOfCopies" + slide;
-        this.setState({[name]: numberOfCopies})
-        alert(this.state.numberOfCopies1);
+    handleSubmit = () => {
+        let slide = this.state.currentSlide;
+        let numberOfCopies = this.state.numberOfCopies;
+        let copiesArray = this.state.copiesArray;
+        copiesArray[slide] = numberOfCopies;
+        this.setState({copiesArray: copiesArray});
     }
 
     render() {
+        const location = {
+            pathname: "/order",
+            state: {
+               copiesArray: this.state.copiesArray
+            }
+        }
+
+        console.log("num of copies" + this.state.numberOfCopies1);
+
         return (
             <div className="slideshow no-select">
                 <h2>Gallery</h2>
@@ -81,12 +91,7 @@ class TestSelectPhoto extends Component {
 
                 <input className="Button Button-Margin" type="submit" value="Add to cart" onClick={this.handleSubmit}/>
 
-                <Link to ={{
-                    pathname: "/order",
-                    data: {
-                        numberOfCopies1: this.state.numberOfCopies1
-                    }
-                }} className="Button" >Pay Now</Link>
+                <Link to ={location} className="Button" >Pay Now</Link>
             </div>
         );
     }

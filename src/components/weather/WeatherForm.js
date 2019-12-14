@@ -20,8 +20,8 @@ export default class WeatherForm extends Component {
     }
 
     handleSubmit(event) {
-        var inputs = Array.from(document.getElementsByTagName('input'))
-        var emptyInputs = inputs.filter(x => x.value.trim() === '')
+        let inputs = Array.from(document.getElementsByTagName('input'))
+        let emptyInputs = inputs.filter(x => x.value.trim() === '')
         if (emptyInputs.length > 0) {
             alert("All fields are mandatory. No fields can be empty.")
         } else {

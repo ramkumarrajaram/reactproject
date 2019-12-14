@@ -3,7 +3,6 @@ import '../../styles/TestOrder.css'
 import '../../styles/Common.css'
 import LoadingSpinner from "../common/LoadingSpinner"
 import CommonError from "../common/CommonError"
-import {Link} from "react-router-dom";
 
 export default class GoogleWeather extends Component {
     constructor(props) {

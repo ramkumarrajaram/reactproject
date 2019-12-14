@@ -2,19 +2,20 @@ import React from 'react';
 
 import TestItHeader from "../common/TestItHeader";
 import TestItOrderForm from "./TestItOrderForm";
+import { withRouter } from 'react-router';
 
-export default class TestOrder extends React.Component {
+ class TestOrder extends React.Component {
     constructor(props) {
         super(props);
-
-        this.state = {
-            numberOfCopiesForFirstItem: 0
+        this.state = {  
+            copiesArray: []
         }
-    }
 
-    componentDidMount() {
-        alert(this.props.location)
-        this.setState({numberOfCopiesForFirstItem: this.props.location})
+        if(this.props.location.state !== null && this.props.location.state !== undefined) {
+            this.state = {
+                copiesArray: this.props.location.state.copiesArray
+            }
+        }
     }
 
     render() {
@@ -23,9 +24,11 @@ export default class TestOrder extends React.Component {
             <div>
                 <TestItHeader/>
                 <div className="App-image">
-                    <TestItOrderForm numberOfCopiesForFirstItem={this.state.numberOfCopiesForFirstItem}/>
+                    <TestItOrderForm copiesArray={this.state.copiesArray}/>
                 </div>
             </div>
         );
     }
 }
+
+export default withRouter(TestOrder);

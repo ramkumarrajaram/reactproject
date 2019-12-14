@@ -12,11 +12,7 @@ class TestItOrderForm extends React.Component {
             country: 'SG',
             email: '',
             address: '',
-            numberOfCopiesForFirstItem: this.props.numberOfCopiesForFirstItem,
-            numberOfCopiesForSecondItem: 0,
-            numberOfCopiesForThirdItem: 0,
-            numberOfCopiesForFourthItem: 0,
-            numberOfCopiesForFifthItem: 0,
+            copiesArray: this.props.copiesArray,
 
             isNavigated: false
         };
@@ -30,8 +26,8 @@ class TestItOrderForm extends React.Component {
     }
 
     handleSubmit(event) {
-        var inputs = Array.from(document.getElementsByTagName('input'))
-        var emptyInputs = inputs.filter(x => x.value.trim() === '')
+        let inputs = Array.from(document.getElementsByTagName('input'))
+        let emptyInputs = inputs.filter(x => x.value.trim() === '')
         if (emptyInputs.length > 0) {
             alert("All fields are mandatory. No fields can be empty.")
             this.setState({
@@ -44,100 +40,87 @@ class TestItOrderForm extends React.Component {
         }
     }
 
+    buildFieldsWithIndex() {
+        const copiesArray = this.state.copiesArray
+        let divList = [];
+        for (let index = 1; index <= 5; index++) {
+            const nameOfElement = "numberOfCopiesForItem" + index;
+            divList.push(
+                <label>
+                    <div className="TestLabel">Number of copies for #{index}:</div>
+                    <div className="TestText">
+                        <input className="TestText" type="number" name={nameOfElement}
+                               value={copiesArray[index] || 0} disabled="disabled"/>
+                    </div>
+                </label>
+            )
+        }
+
+        return divList;
+    }
+
     render() {
-        const {match, location} = this.props;
+        console.log("this.state.copiesArray" + this.state.copiesArray);
 
         return <form id="test_form">
-            {this.state.isNavigated === false &&
-            <div className="TestForm">
-                <h2 className="TestCenter">
-                    Your Order:
-                </h2>
-                <label>
-                    <div className="TestLabel">Last name:</div>
-                    <div className="TestText">
-                        <input className="TestText" type="text" name="lastName" value={this.state.lastName}
-                               onChange={this.handleChange}/>
-                    </div>
-                </label>
-                <label>
-                    <div className="TestLabel">First name:</div>
-                    <div className="TestText">
-                        <input className="TestText" type="text" name="firstName" value={this.state.firstName}
-                               onChange={this.handleChange}/>
-                    </div>
-                </label>
-                <label>
-                    <div className="TestLabel">Phone number:</div>
-                    <div className="TestText">
-                        <input className="TestText" type="text" name="phoneNumber" value={this.state.phoneNumber}
-                               onChange={this.handleChange}/>
-                    </div>
-                </label>
-                <label>
-                    <div className="TestLabel">Country:</div>
-                    <div className="TestText">
-                        <select className="TestText" name="country" value={this.state.country} onChange={this.handleChange}>
-                            <option value="SG">SG</option>
-                            <option value="HK">HK</option>
-                        </select>
-                    </div>
-                </label>
-                <label>
-                    <div className="TestLabel">Email:</div>
-                    <div className="TestText">
-                        <input className="TestText" type="text" name="email" value={this.state.email}
-                               onChange={this.handleChange}/>
-                    </div>
-                </label>
-                <label>
-                    <div className="TestLabel">Address:</div>
-                    <div className="TestText">
-                        <input className="TestText" type="text" name="address" value={this.state.address}
-                               onChange={this.handleChange}/>
-                    </div>
-                </label>
-                <label>
-                    <div className="TestLabel">Number of copies for #1:</div>
-                    <div className="TestText">
-                        <input className="TestText" type="number" name="numberOfCopiesForFirstItem"
-                               value={this.state.numberOfCopiesForFirstItem} onChange={this.handleChange}/>
-                    </div>
-                </label>
-                <label>
-                    <div className="TestLabel">Number of copies for #2:</div>
-                    <div className="TestText">
-                        <input className="TestText" type="number" name="numberOfCopiesForSecondItem"
-                               value={this.state.numberOfCopiesForSecondItem}
-                               onChange={this.handleChange}/>
-                    </div>
-                </label>
-                <label>
-                    <div className="TestLabel">Number of copies for #3:</div>
-                    <div className="TestText">
-                        <input className="TestText" type="number" name="numberOfCopiesForThirdItem"
-                               value={this.state.numberOfCopiesForThirdItem} onChange={this.handleChange}/>
-                    </div>
-                </label>
-                <label>
-                    <div className="TestLabel">Number of copies for #4:</div>
-                    <div className="TestText">
-                        <input className="TestText" type="number" name="numberOfCopiesForFourthItem"
-                               value={this.state.numberOfCopiesForFourthItem} onChange={this.handleChange}/>
-                    </div>
-                </label>
-                <label>
-                    <div className="TestLabel">Number of copies for #5:</div>
-                    <div className="TestText">
-                        <input className="TestText" type="number" name="numberOfCopiesForFifthItem"
-                               value={this.state.numberOfCopiesForFifthItem} onChange={this.handleChange}/>
-                    </div>
-                </label>
-                <div className="TestCenter">
-                    <input className="Button" type="submit" value="Add to cart" onClick={this.handleSubmit}/>
-                </div>
+            {
+                this.state.isNavigated === false &&
+                <div className="TestForm">
+                    <h2 className="TestCenter">
+                        Your Order:
+                    </h2>
+                    <label>
+                        <div className="TestLabel">Last name:</div>
+                        <div className="TestText">
+                            <input className="TestText" type="text" name="lastName" value={this.state.lastName}
+                                onChange={this.handleChange}/>
+                        </div>
+                    </label>
+                    <label>
+                        <div className="TestLabel">First name:</div>
+                        <div className="TestText">
+                            <input className="TestText" type="text" name="firstName" value={this.state.firstName}
+                                onChange={this.handleChange}/>
+                        </div>
+                    </label>
+                    <label>
+                        <div className="TestLabel">Phone number:</div>
+                        <div className="TestText">
+                            <input className="TestText" type="text" name="phoneNumber" value={this.state.phoneNumber}
+                                onChange={this.handleChange}/>
+                        </div>
+                    </label>
+                    <label>
+                        <div className="TestLabel">Country:</div>
+                        <div className="TestText">
+                            <select className="TestText" name="country" value={this.state.country} onChange={this.handleChange}>
+                                <option value="SG">SG</option>
+                                <option value="HK">HK</option>
+                            </select>
+                        </div>
+                    </label>
+                    <label>
+                        <div className="TestLabel">Email:</div>
+                        <div className="TestText">
+                            <input className="TestText" type="text" name="email" value={this.state.email}
+                                onChange={this.handleChange}/>
+                        </div>
+                    </label>
+                    <label>
+                        <div className="TestLabel">Address:</div>
+                        <div className="TestText">
+                            <input className="TestText" type="text" name="address" value={this.state.address}
+                                onChange={this.handleChange}/>
+                        </div>
+                    </label>
+                
+                    {this.buildFieldsWithIndex()}
 
-            </div>
+                    <div className="TestCenter">
+                        <input className="Button" type="submit" value="Add to cart" onClick={this.handleSubmit}/>
+                    </div>
+
+                </div>
             }
             {
                 this.state.isNavigated === true &&

@@ -5,6 +5,7 @@ import Home from "./components/homepage/Home";
 import TestOrder from "./components/order/TestOrder";
 import Gallery from "./components/gallery/Gallery";
 import Weather from "./components/weather/Weather";
+import { withRouter } from "react-router";
 
 class App extends React.Component {
     render() {
@@ -19,4 +20,4 @@ class App extends React.Component {
     }
 }
 
-export default App;
+export default withRouter(App);

@@ -4,6 +4,23 @@ import '../../styles/TestOrder.css'
 
 export default class OrderSummary extends React.Component{
 
+    buildFieldsWithIndex() {
+
+        const copiesArray = this.props.state.copiesArray
+        let divList = [];
+
+        for (let index = 1; index <= 5; index++) {
+            divList.push(
+                <div className="Summary-list">
+                    <label><b>Number of copies for #{index}</b></label><br/>
+                    <label>{copiesArray[index] || 0}</label>
+                </div>
+            )
+        }
+
+        return divList;
+    }
+
     render() {
         return <div className="TestForm">
             <h2 className="TestCenter">Summary of your order</h2>
@@ -31,26 +48,8 @@ export default class OrderSummary extends React.Component{
                 <label><b>Address</b></label><br/>
                 <label>{this.props.state.address}</label>
             </div>
-            <div className="Summary-list">
-                <label><b>Number of copies for #1</b></label><br/>
-                <label>{this.props.state.numberOfCopiesForFirstItem}</label>
-            </div>
-            <div className="Summary-list">
-                <label><b>Number of copies for #2</b></label><br/>
-                <label>{this.props.state.numberOfCopiesForSecondItem}</label>
-            </div>
-            <div className="Summary-list">
-                <label><b>Number of copies for #3</b></label><br/>
-                <label>{this.props.state.numberOfCopiesForThirdItem}</label>
-            </div>
-            <div className="Summary-list">
-                <label><b>Number of copies for #4</b></label><br/>
-                <label>{this.props.state.numberOfCopiesForFourthItem}</label>
-            </div>
-            <div className="Summary-list">
-                <label><b>Number of copies for #5</b></label><br/>
-                <label>{this.props.state.numberOfCopiesForFifthItem}</label>
-            </div>
+            
+            {this.buildFieldsWithIndex()}
         </div>
     }
 
