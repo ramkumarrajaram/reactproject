@@ -1,13 +1,10 @@
 import React from 'react'
-import TestItHeader from "../common/TestItHeader";
 import { Link } from "react-router-dom";
 import '../../styles/Home.css'
 
 const Home = () => {
-
     return (
         <div>
-            <TestItHeader />
             <div className="App-image">
                 <div className="home-text ">
                     <h1 className="header-text">Welcome to Online Ordering System!</h1>

@@ -1,6 +1,5 @@
 import React from 'react';
 
-import TestItHeader from "../common/TestItHeader";
 import TestItOrderForm from "./TestItOrderForm";
 import { withRouter } from 'react-router';
 
@@ -22,7 +21,6 @@ import { withRouter } from 'react-router';
         return (
 
             <div>
-                <TestItHeader/>
                 <div className="App-image">
                     <TestItOrderForm copiesArray={this.state.copiesArray}/>
                 </div>
