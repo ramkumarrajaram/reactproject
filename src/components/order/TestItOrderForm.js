@@ -16,16 +16,13 @@ class TestItOrderForm extends React.Component {
 
             isNavigated: false
         };
-
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleChange(event) {
-        this.setState({[event.target.name]: event.target.value});
+    handleChange = (event) => {
+        this.setState({ [event.target.name]: event.target.value });
     }
 
-    handleSubmit(event) {
+    handleSubmit = () => {
         let inputs = Array.from(document.getElementsByTagName('input'))
         let emptyInputs = inputs.filter(x => x.value.trim() === '')
         if (emptyInputs.length > 0) {
@@ -50,7 +47,7 @@ class TestItOrderForm extends React.Component {
                     <div className="TestLabel">Number of copies for #{index}:</div>
                     <div className="TestText">
                         <input className="TestText" type="number" name={nameOfElement}
-                               value={copiesArray[index] || 0} disabled="disabled"/>
+                            value={copiesArray[index] || 0} disabled="disabled" />
                     </div>
                 </label>
             )
@@ -73,21 +70,21 @@ class TestItOrderForm extends React.Component {
                         <div className="TestLabel">Last name:</div>
                         <div className="TestText">
                             <input className="TestText" type="text" name="lastName" value={this.state.lastName}
-                                onChange={this.handleChange}/>
+                                onChange={this.handleChange} />
                         </div>
                     </label>
                     <label>
                         <div className="TestLabel">First name:</div>
                         <div className="TestText">
                             <input className="TestText" type="text" name="firstName" value={this.state.firstName}
-                                onChange={this.handleChange}/>
+                                onChange={this.handleChange} />
                         </div>
                     </label>
                     <label>
                         <div className="TestLabel">Phone number:</div>
                         <div className="TestText">
                             <input className="TestText" type="text" name="phoneNumber" value={this.state.phoneNumber}
-                                onChange={this.handleChange}/>
+                                onChange={this.handleChange} />
                         </div>
                     </label>
                     <label>
@@ -103,28 +100,28 @@ class TestItOrderForm extends React.Component {
                         <div className="TestLabel">Email:</div>
                         <div className="TestText">
                             <input className="TestText" type="text" name="email" value={this.state.email}
-                                onChange={this.handleChange}/>
+                                onChange={this.handleChange} />
                         </div>
                     </label>
                     <label>
                         <div className="TestLabel">Address:</div>
                         <div className="TestText">
                             <input className="TestText" type="text" name="address" value={this.state.address}
-                                onChange={this.handleChange}/>
+                                onChange={this.handleChange} />
                         </div>
                     </label>
-                
+
                     {this.buildFieldsWithIndex()}
 
                     <div className="TestCenter">
-                        <input className="Button" type="submit" value="Add to cart" onClick={this.handleSubmit}/>
+                        <input className="Button" type="submit" value="Add to cart" onClick={this.handleSubmit} />
                     </div>
 
                 </div>
             }
             {
                 this.state.isNavigated === true &&
-                <OrderSummary state={this.state}/>
+                <OrderSummary state={this.state} />
             }
         </form>;
     }

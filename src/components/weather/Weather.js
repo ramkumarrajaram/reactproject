@@ -1,16 +1,16 @@
-import React, {Component} from 'react'
+import React from 'react'
 import TestItHeader from "../common/TestItHeader";
 import WeatherForm from './WeatherForm';
 
-export default class Weather extends Component {
-    render() {
-        return (
-            <div>
-                <TestItHeader/>
-                <div className="App-image">
-                    <WeatherForm />
-                </div>
+const Weather = () => {
+    return (
+        <div>
+            <TestItHeader />
+            <div className="App-image">
+                <WeatherForm />
             </div>
-        )
-    }
+        </div>
+    )
 }
+
+export default Weather;

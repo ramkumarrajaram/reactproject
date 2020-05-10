@@ -4,7 +4,7 @@ import '../../styles/TestOrder.css'
 
 export default class OrderSummary extends React.Component{
 
-    buildFieldsWithIndex() {
+    buildFieldsWithIndex = () => {
 
         const copiesArray = this.props.state.copiesArray
         let divList = [];
@@ -50,10 +50,14 @@ export default class OrderSummary extends React.Component{
             </div>
             
             {this.buildFieldsWithIndex()}
+
+            <div className="TestCenter">
+                <input className="Button" type="submit" value="Back To Order" onClick={this.backToOrder} />
+            </div>
         </div>
     }
 
-    backToOrder() {
-        return <TestItOrderForm/>
+    backToOrder = () => {
+        return <TestItOrderForm />
     }
 }

@@ -16,8 +16,8 @@ class TestSelectPhoto extends Component {
             numberOfCopies5: 0,
             max: 5
         }
-        //Since we use Arrow function, we are not required to bind this 
-        // as arrow function will ensure this is present to the handle methods
+        //Since we use Arrow function, we are not required to bind "this", 
+        // as arrow function will ensure "this" is present to the handle methods
         //this.handleOnChange = this.handleOnChange.bind(this);
         //this.handleSubmit = this.handleSubmit.bind(this);
     }
