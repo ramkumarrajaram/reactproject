@@ -70,7 +70,7 @@ class TestSelectPhoto extends Component {
                 <table className="Photo-table">
                     <tbody>
                     <td>
-                        <div className="nav" onClick={() => this.previous()}>
+                        <div className="nav" onClick={this.previous}>
                             <span>&#8678;</span>
                         </div>
                     </td>
@@ -83,8 +83,8 @@ class TestSelectPhoto extends Component {
                                    value={this.state.numberOfCopies} onChange={this.handleOnChange}/>
                         </div>
                     </td>
-                    <td onClick={() => this.next()}>
-                        <div className="nav d-flex" onClick={() => this.next()}>
+                    <td onClick={() => this.next}>
+                        <div className="nav d-flex" onClick={this.next}>
                             <span>&#8680;</span>
                         </div>
                     </td>
