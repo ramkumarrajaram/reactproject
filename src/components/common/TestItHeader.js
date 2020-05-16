@@ -1,21 +1,22 @@
 import React from 'react';
 import logo from '../../assets/images/dummy.jpg';
 import '../../styles/TestItHeader.css'
+import GoogleOAuth from '../oauth/GoogleOAuth';
+import { Link } from 'react-router-dom';
 
 const TestItHeader = () => {
     return (
-        <table className="Test-brand-title">
-            <tbody>
-                <td className="TestBrand">
-                    <a className="navbar-brand" href="/">
-                        <img src={logo} height="50" alt="" />
-                    </a>
-                </td>
-                <td>
-                    <h2>Online Ordering System</h2>
-                </td>
-            </tbody>
-        </table>
+        <div className="ui secondary menu">
+            <Link to="/" className="item">
+                <img src={logo} alt="" />
+            </Link>
+            <div className="right menu">
+                <div className="item">
+                    Online Ordering System
+                </div>
+                <GoogleOAuth/>
+            </div>
+        </div>
     );
 }
 
