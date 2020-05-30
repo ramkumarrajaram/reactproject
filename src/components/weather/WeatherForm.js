@@ -44,7 +44,7 @@ export default class WeatherForm extends Component {
             return <GoogleWeather cityName={this.state.cityName} backToSearch={this.backToSearch}/>
         } else {
             return (
-                <div class="TestForm">
+                <div className="TestForm">
                         <h2 className="TestCenter">
                             Weather in your city
                         </h2>
