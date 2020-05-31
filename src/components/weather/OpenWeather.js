@@ -36,7 +36,6 @@ class OpenWeather extends React.Component {
     onSubmit = (formProps) => {
         this.props.setLoadingSpinner();
         this.props.getWeather(formProps);
-
     }
 
     backToSearch = () => {
@@ -44,8 +43,6 @@ class OpenWeather extends React.Component {
     }
 
     renderWeatherData = () => {
-        //if ()
-        console.log(this.props);
         if (this.props.isLoading) {
             return <LoadingSpinner />;
         } else if (!this.props.isFormSubmitted) {

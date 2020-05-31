@@ -12,7 +12,7 @@ export default (state = INITIAL_STATE, action) => {
         case GET_WEATHER:
             return { ...state, isFormSubmitted: true, isLoading: false, details: action.payload };
         case RESET_FORM_SUBMIT:
-            return { ...state, isFormSubmitted: false };
+            return { ...state, isFormSubmitted: false, errorMessage: null };
         case SET_LOADING:
             return { ...state, isLoading: true }
         case SHOW_ERROR:
