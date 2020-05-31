@@ -1,13 +1,15 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import '../../styles/TestOrder.css';
-import { getWeather, resetFormSubmit } from '../../actions'
+import { getWeather, resetFormSubmit, setLoadingSpinner } from '../../actions'
 import { validate } from '../../validate/WeatherFormValidate';
 import { connect } from 'react-redux';
 import WeatherDetails from './WeatherDetails';
+import LoadingSpinner from '../common/LoadingSpinner';
+import CommonError from '../common/CommonError';
 
 class OpenWeather extends React.Component {
-    renderError = ({ error, touched }) => {
+    renderValidationError = ({ error, touched }) => {
         if (error && touched) {
             return (
                 <div className="ui error message">
@@ -26,13 +28,15 @@ class OpenWeather extends React.Component {
                     className={className}
                     placeholder={placeholder}
                     type={type} />
-                {this.renderError(meta)}
+                {this.renderValidationError(meta)}
             </div>
         );
     }
 
     onSubmit = (formProps) => {
+        this.props.setLoadingSpinner();
         this.props.getWeather(formProps);
+
     }
 
     backToSearch = () => {
@@ -40,10 +44,18 @@ class OpenWeather extends React.Component {
     }
 
     renderWeatherData = () => {
-        if (this.props.isFormSubmitted) {
-            return <WeatherDetails backToSearch={this.backToSearch} />
+        //if ()
+        console.log(this.props);
+        if (this.props.isLoading) {
+            return <LoadingSpinner />;
+        } else if (!this.props.isFormSubmitted) {
+            return this.renderForm();
+        } else if (this.props.errorMessage !== null) {
+            return <CommonError
+                errorMessage={this.props.errorMessage}
+                backToSearch={this.backToSearch} />
         }
-        return this.renderForm();
+        return <WeatherDetails backToSearch={this.backToSearch} />
     }
 
     renderForm = () => {
@@ -69,7 +81,6 @@ class OpenWeather extends React.Component {
     }
 
     render() {
-        console.log("render called");
         return (
             <div>{this.renderWeatherData()}</div>
         );
@@ -77,7 +88,11 @@ class OpenWeather extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    return { isFormSubmitted: state.weatherData.isFormSubmitted }
+    return {
+        isFormSubmitted: state.weatherData.isFormSubmitted,
+        isLoading: state.weatherData.isLoading,
+        errorMessage: state.weatherData.errorMessage
+    }
 }
 
 const reduxFormWrapped = reduxForm({
@@ -85,5 +100,8 @@ const reduxFormWrapped = reduxForm({
     validate
 })(OpenWeather);
 
-export default connect(mapStateToProps,
-    { getWeather, resetFormSubmit })(reduxFormWrapped);
+export default connect(mapStateToProps, {
+    getWeather,
+    resetFormSubmit,
+    setLoadingSpinner
+})(reduxFormWrapped);
